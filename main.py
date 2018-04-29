@@ -1,7 +1,7 @@
 import telebot
 
 
-telebot.apihelper.proxy = {'https':'socks5://swcbbabh:aYEbh6q5gQ@178.32.218.16:3306'}
+#telebot.apihelper.proxy = {'https':'socks5://swcbbabh:aYEbh6q5gQ@178.32.218.16:3306'}
 token = "526438480:AAFGQw3uv-2sC2rojii41wwBHXG-8fz9nsk"
 bot = telebot.TeleBot(token)
 bot_about = """
@@ -13,6 +13,7 @@ pupils = set()
 
 @bot.message_handler(commands=['start', 'info'])
 def info(msg):
+    print('new user', msg.from_user.id)
     pupils.add(msg.from_user.id)
     bot.reply_to(msg, str(bot_about))
 
